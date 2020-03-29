@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <h1>寶可夢圖鑑立表</h1>
+    
+    <button id='addone' onclick="AddPokemon()">Click +1</button>
+
+    <button id='removeone' onclick="removePokemon()">Clear -1</button>
+
+    <button id='loadall' onclick="allPokemon()">Load All</button>
+
+    <div id="container">
+    
+    </div>
+
+   
+
+    
+   <script>
+       var container = document.getElementById('container');
+       window.onload = appendPokemon();   //Window載入時,執行appendPokemon()方法,新增一張圖片
+       
+       function appendPokemon(){
+           // 1. creat <img> element
+             let img = document.createElement('img');
+
+            //2. set img'src=''
+            img.setAttribute('src','https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png')
+            //3. add <img> ino <div>
+             
+            container.appendChild(img); 
+             
+       }
+       function appendPokemonByTemplate(){
+           let fileName = '001';
+           let pathFile=`https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${fileName}`
+           let PokemonImg = `img src ='${pathFile}'/>`;
+g
+           container.innerHTML = PokemonImg;
+
+       }
+        var index = 2 ;
+       function AddPokemon(){
+           let img = document.createElement('img')
+
+           let no = index.toString().padStart(3, '0');
+
+           img.setAttribute('src', `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${no}.png`)
+
+           container.appendChild(img);
+          
+           index++;
+
+       }
+
+
+       function removePokemon(){
+
+       }
+
+
+
+       
+
+
+
+       
+         
+   
+   
+   </script>
+
+</body>
+</html>
