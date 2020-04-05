@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .warp{
+        text-align: center;
+        margin: 150px;
+        
+    }
+    .top{
+        width: 250px;
+        padding: 50px;
+        border: 1px solid black ;
+        margin-bottom: 50px;
+        margin-left: 420px;
+
+    }
+    .header{
+        text-align: center;
+    }
+</style>
+<body>
+   <div class="warp">
+       <div class="top">
+        <label for=""  id="answer">0~100</label></div>
+    <div class="header"  id="random">
+        <button>產生數字</button>
+    </div>
+    <div>
+        <input type="text" id="txt-box">
+    </div>
+        <div >
+            <button class="numbers">1</button>
+            <button class="numbers">2</button>
+            <button class="numbers">3</button>
+        </div>
+        <div >
+            <button class="numbers">4</button>
+            <button class="numbers">5</button>
+            <button class="numbers">6</button>
+        </div>
+        <div >
+            <button class="numbers">7</button>  
+            <button class="numbers">8</button>
+            <button class="numbers">9</button>
+        </div>
+        <div>
+            <button class="number-input" id="remove" >X</button>
+            <button class="numbers">0</button>
+            <button class="number-input" id="enter">V</button>
+        </div>
+  </div>
+
+  <script>
+      var answer = document.getElementById('answer')
+      var txt = document.getElementById('txt-box')
+      var number = document.querySelectorAll('div.numbers')
+
+      var randomnumber = document.getElementById('random')
+      randomnumber.addEventListener('chick',getnumber)
+      function getnumber(){
+        randomnumber= Math.floor((Math.random()*100)+1);
+          answer.innerHTML=('0~100');
+          txt.value= '';
+          minnumber = 0;
+          maxnumber = 100;
+      }
+      number.forEach(element => {
+          element.addEventListener('chick',inputnumber);
+      });
+      function inputnumber(){
+          if ( this.innerHTML== 0 && txt.value ==''){
+              txt.value = '';
+          } else{
+              txt.value += this.innerHTML;   
+          }
+      }
+      var remove = document.getElementById('remove');
+      remove.onclick = function(){
+          txt.value = '';
+      }
+      var enter = document.getElementById('enter');
+      var minnumber = 0 ;
+      var maxnumber = 100;
+      enter.onclick = function(){
+          if(txt.value >= maxnumber||txt.value <= minnumber){
+              alert('太離譜囉!!')
+              answer.innerHTML = minnumber+'~'+maxnumber;
+              txt.value='';
+          }
+          else if(txt.value > randomnumber &&txt.value>minnumber){
+              minnumber = txt.value;
+              answer.innerHTML = minnumber + '~' + maxnumber;
+              txt.value='';
+          }
+          else if(txt.value > randomnumber && txt.value < maxnumber){
+              maxnumber = txt.value;
+              answer.innerHTML = minnumber + '~' + maxnumber;
+              txt.value= '';
+          }
+          else{
+              alert('恭喜答對了:'+ randomnumber)
+          }
+          window.onload = getnumber();
+      }
+           
+
+
+
+
+
+  </script>
+
+
+</body>
+</html>

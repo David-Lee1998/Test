@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+  </head>
+  <style>
+    *{
+        margin:0;
+        padding:0;
+        list-style:none;    
+    }
+
+    .Color{
+      margin-top: 5%;
+      
+    }
+    .norm{
+      margin-top: 2%;
+    }
+  </style>
+  <body>
+   <div class="menu">
+      <button type="button" class="btn btn-primary btn-lg" id="addphone" onclick="AddPhone"> IPhone11</button>
+      <button type="button" class="btn btn-secondary btn-lg" id="addIPad" onclick="AddIpad">IPad</button>
+      <button type="button" class="btn btn-third btn-lg"id="addMac" onclick="AddMac">Mac</button>
+  </div>
+
+
+  <div class="Color" >
+      <h1>顏色</h1>
+      <button  id="purple" type="button" onclick="inputnum"  style="padding: 20px;">紫色</button>
+      <button  id="yellow" type="button" onclick="inputnum"  style="padding: 20px;">黃色</button>
+      <button  id="green" type="button" onclick="inputnum"   style="padding: 20px;">綠色</button>
+      <button  id="black" type="button" onclick="inputnum"   style="padding: 20px;">黑色</button>
+ 
+    
+  </div>
+   
+  <div class="norm">
+    <h1>規格</h1>
+    <button id="small" type="button" onclick="inputnum"  style="padding: 20px;">64GB</button>
+    <button id="min" type="button" onclick="inputnum"  style="padding: 20px;">128GB</button>
+    <button id="big" type="button" onclick="inputnum"  style="padding: 20px;">256GB</button>
+
+
+  </div>
+  <div class="prices">
+    <h1 id="price"> NT$24,900 起</h1>
+  
+  </div>
+    
+    
+
+
+
+    <div id='container'>
+
+
+
+
+    </div>
+
+
+
+
+    <script>
+       var products = {
+            iphone: {
+                p01: { id: 'p01', color: '紫', price: '25000', storage: '64G', url: '#' },
+                p02: { id: 'p02', color: '黃', price: '27000', storage: '128G',  url: '#' },
+                p03: { id: 'p03', color: '綠', price: '28000', storage: '256G', url: '#' },
+                p03: { id: 'p03', color: '綠', price: '28000', storage: '256G', url: '#' }
+            },
+     
+
+
+
+
+    </script>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
+

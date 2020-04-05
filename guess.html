@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .warp{
+        text-align: center;
+        margin: 150px;
+        
+    }
+   
+</style>
+<body>
+   <div class="warp">
+       <div >
+        <label for=""  id="answer">0~100</label></div>
+    <div   id="random">
+        <button>產生數字</button>
+    </div>
+    <div>
+        <input type="text" id="text_box">
+    </div>
+        <div >
+            <button class="numbers">1</button>
+            <button class="numbers">2</button>
+            <button class="numbers">3</button>
+        </div>
+        <div >
+            <button class="numbers">4</button>
+            <button class="numbers">5</button>
+            <button class="numbers">6</button>
+        </div>
+        <div >
+            <button class="numbers">7</button>  
+            <button class="numbers">8</button>
+            <button class="numbers">9</button>
+        </div>
+        <div>
+            <button class="number_input" id="remove" >X</button>
+            <button class="numbers">0</button>
+            <button class="number_input" id="enter">V</button>
+        </div>
+  </div>
+
+  <script>
+
+      var random = document.getElementById('random');
+      var min_number = 0 ;
+      var max_number = 100 ;
+      var answer = document.getElementById('answer');
+      var random_number;
+      var text_box = document.getElementById('text_box');
+      var number_input = document.querySelectorAll('.number_input');
+      var number = document.querySelectorAll('.number');
+
+
+
+      random.onclose = function(){
+          random_number = Math.floor((Math.random()*100)+1);
+          var min_number = 0;
+          var max_number = 100;
+          answer.innerHTML ='0~100';
+      }
+
+      number.forEach(Element => {
+          Element.onclick = function(){
+              if(Element.innertext == '0'&& text_box.value ==''){
+                  text_box.value = '';
+              }
+              else{
+                text_box.value += Element.innerText;
+              }
+          }
+      });
+
+
+      number_input.forEach(Element=>{
+          Element.onclick = function(){
+              if(Element.innerText == 'X'){
+                  text_box.value = '';
+              }
+              else{
+                  if(text_box.value <= min_number ||  text_box.value >=max_number){
+                      alert('你猜的數字差太多')
+                  }
+                  else if (text_box.value <= random_number){
+                      min_number = text_box.value;
+                  }
+                  else if (text_box.value >= max_number){
+                      max_number = text_box.value;
+                  }
+                  answer.innerHTML = `${min_number}~${max_number}`;
+                  if (text_box.value == random_number){
+                      alert('終於答對了, 答案就是' + random_number);
+                  }
+                  text_box.value = '';
+
+              }
+          }
+      })
+
+     
+           
+
+
+
+
+
+  </script>
+
+
+</body>
+</html>
