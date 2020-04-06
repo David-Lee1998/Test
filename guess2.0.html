@@ -9,7 +9,6 @@
     .warp{
         text-align: center;
         margin: 150px;
-        
     }
    
 </style>
@@ -18,34 +17,35 @@
        <div >
         <label for=""  id="answer">0~100</label></div>
     <div   id="random">
-        <button>產生數字</button>
+        <button  onclick="ran()" id="btn">產生數字</button>
     </div>
     <div>
         <input type="text" id="text_box">
     </div>
         <div >
-            <button class="numbers">1</button>
-            <button class="numbers">2</button>
-            <button class="numbers">3</button>
+            <button onclick="numbers(this)">1</button>
+            <button onclick="numbers(this)">2</button>
+            <button onclick="numbers(this)">3</button>
         </div>
         <div >
-            <button class="numbers">4</button>
-            <button class="numbers">5</button>
-            <button class="numbers">6</button>
+            <button onclick="numbers(this)">4</button>
+            <button onclick="numbers(this)">5</button>
+            <button onclick="numbers(this)">6</button>
         </div>
         <div >
-            <button class="numbers">7</button>  
-            <button class="numbers">8</button>
-            <button class="numbers">9</button>
+            <button onclick="numbers(this)">7</button>  
+            <button onclick="numbers(this)">8</button>
+            <button onclick="numbers(this)" id="inputnum">9</button>
         </div>
         <div>
-            <button class="number_input" id="remove" >X</button>
-            <button class="numbers">0</button>
-            <button class="number_input" id="enter">V</button>
+            <button onclick="number_inputs" id="remove" >X</button>
+            <button onclick="numbers(this)">0</button>
+              <button onclick="number_input" id="enter">V</button>
         </div>
   </div>
 
   <script>
+
 
       var random = document.getElementById('random');
       var min_number = 0 ;
@@ -53,51 +53,50 @@
       var answer = document.getElementById('answer');
       var random_number;
       var text_box = document.getElementById('text_box');
-      var number_input = document.querySelectorAll('.number_input');
-      var number = document.querySelectorAll('.number');
+      var number_input = document.querySelectorAll('numbers');
+      var number = document.querySelectorAll('numbers');
+     
 
 
+    function ran(){
+       var random_number = Math.floor((Math.random()*100)+1);
+        document.getElementById('text_box').placeholder =  random_number;
 
-      random.onclose = function(){
-          random_number = Math.floor((Math.random()*100)+1);
-          var min_number = 0;
-          var max_number = 100;
-          answer.innerHTML ='0~100';
-      }
+    }
 
-      number.forEach(Element => {
+    function numbers(x){
+        var num = x.innerHTML;
+        document.getElementById('text_box').value += num;
+    }
+       number_input.forEach(Element=>{
           Element.onclick = function(){
-              if(Element.innertext == '0'&& text_box.value ==''){
+              if(Element.innerText == 'X'){
                   text_box.value = '';
               }
               else{
-                text_box.value += Element.innerText;
-              }
-          }
-      });
-
-
-      number_input.forEach(Element=>{
-          Element.onclick = function(){
-              {
-                  if(text_box.value <= min_number ||  text_box.value >=max_number){
-                      alert('你猜的數字差太多')
+                if (text_box.value == random_number){
+                      alert('終於答對了, 答案就是' + random_number);
                   }
                   else if (text_box.value <= random_number){
                       min_number = text_box.value;
                   }
                   else if (text_box.value >= max_number){
                       max_number = text_box.value;
+                      answer.innerHTML = `${min_number}~${max_number}`;
                   }
                   answer.innerHTML = `${min_number}~${max_number}`;
-                  if (text_box.value == random_number){
-                      alert('終於答對了, 答案就是' + random_number);
+                  if(text_box.value <= min_number ||  text_box.value >=max_number){
+                      alert('你猜的數字差太多')
                   }
+                 
                   text_box.value = '';
 
               }
           }
       })
+
+             
+             
 
      
            

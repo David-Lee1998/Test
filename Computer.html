@@ -87,6 +87,18 @@
             git_number = document.getElementById("result");
             git_number.value = equal;
         }
+        delete_num.forEach(element => {
+            element.onclick= function(){
+                if(element.innerhtml == 'DEL'){
+                    inputnum.value = inputnum.value.substring(0, inputnum.value.length -1);
+                }
+            }
+        });
+            
+        
+
+
+
 
     </script>
     </body>

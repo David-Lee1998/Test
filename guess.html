@@ -57,7 +57,7 @@
       var number = document.querySelectorAll('.number');
 
 
-
+ 
       random.onclose = function(){
           random_number = Math.floor((Math.random()*100)+1);
           var min_number = 0;
@@ -91,6 +91,7 @@
                   }
                   else if (text_box.value >= max_number){
                       max_number = text_box.value;
+
                   }
                   answer.innerHTML = `${min_number}~${max_number}`;
                   if (text_box.value == random_number){
