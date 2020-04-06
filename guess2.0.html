@@ -38,9 +38,9 @@
             <button onclick="numbers(this)" id="inputnum">9</button>
         </div>
         <div>
-            <button onclick="number_inputs" id="remove" >X</button>
+            <button onclick="number_input" id="remove" >X</button>
             <button onclick="numbers(this)">0</button>
-              <button onclick="number_input" id="enter">V</button>
+            <button onclick="number_input" id="enter">V</button>
         </div>
   </div>
 
@@ -70,10 +70,7 @@
     }
        number_input.forEach(Element=>{
           Element.onclick = function(){
-              if(Element.innerText == 'X'){
-                  text_box.value = '';
-              }
-              else{
+
                 if (text_box.value == random_number){
                       alert('終於答對了, 答案就是' + random_number);
                   }
@@ -93,7 +90,7 @@
 
               }
           }
-      })
+      )
 
              
              
