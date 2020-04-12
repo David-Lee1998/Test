@@ -48,6 +48,8 @@
     <button id="small" type="button" onclick="inputnum"  style="padding: 20px;">64GB</button>
     <button id="min" type="button" onclick="inputnum"  style="padding: 20px;">128GB</button>
     <button id="big" type="button" onclick="inputnum"  style="padding: 20px;">256GB</button>
+
+
   </div>
   <div class="prices">
     <h1 id="price"> NT$24,900 起</h1>
@@ -57,10 +59,17 @@
   
 
     <script>
-      function norm(){
-        
-      }
-      
+       var products = {
+            iphone: {
+                p01: { id: 'p01', color: '紫', price: '25000', storage: '64G', url: '#' },
+                p02: { id: 'p02', color: '黃', price: '27000', storage: '128G',  url: '#' },
+                p03: { id: 'p03', color: '綠', price: '28000', storage: '256G', url: '#' },
+                p03: { id: 'p03', color: '黑', price: '28000', storage: '256G', url: '#' }
+            }
+       }
+     
+
+
 
 
     </script>
