@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+
+</style>
 
 <body>
     <h1>Apple iPad</h1>
@@ -85,26 +88,19 @@
             }
         ];
 
-        let iPad_expensive = ipad.filter(item => item.price > 15000);
+ 
 
-        //const titlesArray = ['Sku', 'Price', 'Category', 'Description'];
-        //用Object.keys()取得Object物件所有屬性名稱，回傳陣列
+     
 
-        const employees = [
-            ,
-            { name: "David", age: 35, height: 170, weight: 60 },
-            { name: "Mary", age: 22, height: 172, weight: 52 },
-            { name: "John", age: 18, height: 178, weight: 70 },
-            { name: "Cindy", age: 26, height: 168, weight: 50 }
-        ];
-
+    
         
 
 
 
         let body = document.querySelector('body');
         let table = document.createElement('table');
-        table.setAttribute("border", "2");
+        table.setAttribute("border", "2") ;
+        
 
         let thead = document.createElement('thead');
         let tbody = document.createElement('tbody');
@@ -112,22 +108,15 @@
         table.appendChild(tbody);
         body.appendChild(table);
 
-        //employees[0]第一筆資料 - { name: "Kevin", age: 32, height: 175, weight: 64 }
-        // console.log(Object.keys(employees[0]));
-        // console.log(Object.Values(employees[0]))
-        
-        // window.onload = function () {
+       
              const titlesArray = Object.keys(ipad[0]);
-            //建立thead
+   
             addThead(titlesArray);
 
-            //迭代陣列, 每個Item是一個Object, 再用.values()取值,回傳陣列
             ipad.forEach((item) => {
                 addTbody(Object.values(item))
             });
-        // }
-
-        //Create Thead, ["sku", "price" ,"storage", "description"]
+  
         function addThead(titlesArray) {
             let _tr = document.createElement('tr');
             thead.appendChild(_tr);
@@ -138,13 +127,7 @@
             });
         }
 
-        // let o = {
-        //     "sku": "MW762",
-        //     "price": 10900,
-        //     "storage": "32GB",
-        //     "description": "10.2 吋 iPad Wi-Fi 機型 32GB - 金色"
-        // }
-        //Create Tbody  ["MW762", 10900, "32GB", "10.2 吋 iPad Wi-Fi 機型 32GB - 金色"]
+     
         function addTbody(rowArray) {
             let _tr = document.createElement('tr');
             tbody.append(_tr);
@@ -153,8 +136,7 @@
                 let _td = document.createElement('td');
                 _td.innerHTML = item;
 
-                // let _tdText = document.createTextNode(item);
-                // _td.appendChild(_tdText);
+                
                 _tr.appendChild(_td);
             });
         }
