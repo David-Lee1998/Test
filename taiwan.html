@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../Modules/MyHelper.js"></script>
+</head>
+  
+<body>
+    <h1> Taiwan Address</h1>
+    <div id="msg"></div>
+    <template id="templateRow">
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    </template>
+
+    
+
+    <script>
+
+        var table = document.createElement('table');
+        table.setAttribute("border", "2");
+        var thead = document.createElement('thead');
+        var msg = document.getElementById('msg');
+        msg.appendChild(table);
+        var tbody = document.createElement('tbody');
+        table.appendChild(tbody);
+     
+      
+    window.onload = function(){
+        let xhr = new this.XMLHttpRequest();
+        xhr.onload = function(){
+            if(xhr.readyState == 4 && xhr.status == 200){
+               zipcodeArray = JSON.parse(this.responseText);
+
+               let ZipCode = [];
+            //  抓資料
+               zipcodeArray.forEach((item ,index)=>{
+
+
+               let _city = item.CityName; 
+               let _districts = [];
+               item.AreaList.forEach((item, index) =>{
+                 _districts.push({Districts: item.AreaName, ZipCode:item.ZipCode });
+                     
+                });
+               let _cityObject = {City: _city,Districts:_districts};
+               ZipCode.push(_cityObject);
+               console.log(ZipCode);      
+            });                                     
+        }else{
+                msg.textContent = '發⽣錯誤，HTTP response代碼：'+ xhr.status;
+             }  
+        }   
+        xhr.open("GET" , "http://127.0.0.1:5502/JavaScriptExamples/ooo.test/taiwanaddress/Taiwanaddress.json");
+        // xhr.open("POST",'');
+        xhr.send();
+    }
+    function addTbody(rowArray){
+        let templateRow = document.getElementById('templateRow')
+        let cloneContent = templateRow.cotent.cloneNode(true);
+        let tds = cloneContent.querySelectorAll('td');
+        rowArray.forEach(function(item,index){
+            if (index ==1){
+                tds[1].textContent = item[0].Districts;
+                tds[2].textContent = item[1].Districts;
+            }else{
+                tds[index].textContent = rowArray[index];
+            }
+            tbody.appendChild(cloneContent);
+        })
+
+    }
+
+    
+          
+
+    </script>
+
+    
+</body>
+</html>
