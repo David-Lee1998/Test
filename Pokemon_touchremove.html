@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <h1>寶可夢圖鑑列表</h1>
+    <button id='addpic'>新增</button>
+    <button id='removepic'>修改</button>
+    <button id='loadall'>展開全部</button>
+
+    <div id='container'>
+
+    </div>
+
+    <script>
+        let pic = 1 ;
+        let number ;
+
+
+        $('#addpic').click(function(){
+           number = pic.toString().padStart(3, '0');
+           $('#container').append(`<img src = 'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${ number}.png'/>`)
+           pic++;
+        });
+
+
+        $('#removepic').click(function(){
+            $('img').last().remove();
+           pic--;
+        });
+
+        $('#loadall').click(function(){
+            for (let i = 1; i < 890; i++) {
+                let fileName = i.toString().padStart(3, '0');
+                let pathFile = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${fileName}.png`;
+                let img = document.createElement('img');
+                img.setAttribute('src', pathFile);
+                container.appendChild(img);
+            }
+            $(document).on('click', 'img', function (touch_remove) {
+                    $('img').first().remove();
+                });
+        })
+
+
+
+       
+       
+
+    </script>
+</body>
+
+</html>
